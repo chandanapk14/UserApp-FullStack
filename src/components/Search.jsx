@@ -23,7 +23,21 @@ const Search = () => {
             }
         ).catch()
     }
-
+//delete handling event
+const deleteUser=(id)=>{
+    let input = {"_id": id}
+    axios.post("http://localhost:8086/delete",input).then(
+        (response)=>{
+            console.log(response.data)
+            if(response.data.status=="success"){
+                alert("successfully  updated")
+            }
+            else{
+                alert("Error in deletion")
+            }
+        }
+    ).catch().finally()
+}
     return (
         <div>
             <Navbar /><br></br>
@@ -44,7 +58,7 @@ const Search = () => {
                             </div>
 
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </div>
             <div className="row">
@@ -80,7 +94,7 @@ const Search = () => {
                                         <td>{value.email}</td>
                                         <td>{value.username}</td>
                                         <td>{value.password}</td>
-                                        <td><button className="btn btn-danger">DELETE</button></td>
+                                        <td><button className="btn btn-danger" onClick={()=>{deleteUser(value._id)}}>DELETE</button></td>
                                     </tr>
                                 }
                             )}
