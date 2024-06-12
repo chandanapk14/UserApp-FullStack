@@ -16,7 +16,7 @@ const Register = () => {
             "place": "",
             "email": "",
             "username": "",
-            "password": ""
+            "password": "",
         }
     )
 
@@ -25,17 +25,22 @@ const Register = () => {
     }
     const readValue = () => {
         console.log(data)
+        if(data.password!=data.cpass)
+            {
+        alert("Incorrect Password")
+            }
+        else{
         axios.post("http://localhost:8086/add", data).then(
             (response) => {
-                console.log(response.data)
-                if (response.data.status == "success" && data.password==data.cpass) {
+                       
+                if (response.data.status == "success") {
+                    console.log(response.data)
                     alert("Successfully added")
                 } else {
                     alert("Error")
                 }
-            }
-        ).catch()
-    }
+            }).catch()
+    }}
     return (
         <div>
             <Navbar /><br></br>
