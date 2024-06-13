@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const Register = () => {
     const [data, changeData] = useState(
-        {
+       [ {
             "name": "",
             "dob": "",
             "bldgrp": "",
@@ -18,6 +18,7 @@ const Register = () => {
             "username": "",
             "password": "",
         }
+    ]
     )
 
     const inputHandler = (event) => {
